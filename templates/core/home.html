@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home | KP Apartments{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero d-flex align-items-center text-center text-white">
+  <div class="container position-relative py-5">
+    <span class="badge rounded-pill bg-accent px-3 py-2 mb-3">Now leasing</span>
+    <h1 class="display-3 fw-bold mb-3">Live well at KP Apartments</h1>
+    <p class="lead mx-auto mb-4 hero-lead">Modern comfort, great location, and a community you'll love coming home to.</p>
+    <a href="{% url 'core:contact' %}" class="btn btn-accent btn-lg rounded-pill px-4 me-2">Book a tour</a>
+    <a href="{% url 'core:amenities' %}" class="btn btn-outline-light btn-lg rounded-pill px-4">See amenities</a>
+  </div>
+</section>
+
+
+<!-- 3-1 FEATURE CARDS -->
+<section class="container cards-overlap pb-5">
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-home/600/400" class="card-img-top" alt="Apartments">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Apartments</span>
+          <h4 class="card-title fw-bold">Comfortable Living</h4>
+          <p class="card-text text-muted">Spacious, modern units with everything you need.</p>
+          <a href="{% url 'core:gallery' %}" class="stretched-link fw-semibold link-accent text-decoration-none"> Gallery and floor plans &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-pool/600/400" class="card-img-top" alt="Amenities">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Amenities</span>
+          <h4 class="card-title fw-bold">Resort-Style Amenities</h4>
+          <p class="card-text text-muted">Pool, fitness center, and community spaces.</p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-portal/600/400" class="card-img-top" alt="Tenant portal">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Residents</span>
+          <h4 class="card-title fw-bold">Easy Tenant Portal</h4>
+          <p class="card-text text-muted">Pay rent and submit maintenance requests online.</p>
+          <a href="{% url 'core:contact' %}" class="stretched-link fw-semibold link-accent text-decoration-none">Get in touch &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+{% endblock %}

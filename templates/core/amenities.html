@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Amenities | KP Apartments{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="py-5 bg-light border-bottom">
+  <div class="container text-center py-4">
+    <span class="badge rounded-pill bg-soft-gold mb-3">Amenities</span>
+    <h1 class="display-5 fw-bold mb-3">Live Well at KP Apartments</h1>
+    <p class="lead text-muted mx-auto" style="max-width: 640px;">
+      Everything you need to relax, stay active, and feel at home, right outside your door.
+    </p>
+  </div>
+</section>
+
+<!-- AMENITY CARDS -->
+<section class="container py-5">
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-playground/600/400" class="card-img-top" alt="Playground">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Outdoor</span>
+          <h4 class="card-title fw-bold">Playground</h4>
+          <p class="card-text text-muted">A safe and fun area for children to play and enjoy the outdoors.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-gym/600/400" class="card-img-top" alt="Fitness center">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">permanent water access</span>
+          <h4 class="card-title fw-bold">Fresh Water Access</h4>
+          <p class="card-text text-muted">Access to fresh water for drinking, cooking, and other daily needs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-clubhouse/600/400" class="card-img-top" alt="Clubhouse">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Community</span>
+          <h4 class="card-title fw-bold">Outdoor area with shaded seating</h4>
+          <p class="card-text text-muted">A comfortable outdoor space with shaded seating for relaxation and socializing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-grill/600/400" class="card-img-top" alt="Grilling area">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Outdoor</span>
+          <h4 class="card-title fw-bold">BBQ &amp; Picnic Area</h4>
+          <p class="card-text text-muted">Outdoor grills and shaded tables for weekend cookouts with friends.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-parking/600/400" class="card-img-top" alt="Parking">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Convenience</span>
+          <h4 class="card-title fw-bold">Parking</h4>
+          <p class="card-text text-muted">Reserved and covered spaces, plus plenty of guest parking.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card feature-card h-100 border-0 shadow-lg">
+        <img src="https://picsum.photos/seed/kp-laundry/600/400" class="card-img-top" alt="Laundry room">
+        <div class="card-body p-4">
+          <span class="badge rounded-pill bg-soft-gold mb-2">Convenience</span>
+          <h4 class="card-title fw-bold">Laundry area</h4>
+          <p class="card-text text-muted">Convenient on-site laundry area for residents. Plus option to do loundry at valcony.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INCLUDED IN EVERY HOME -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Included in Every Home</h2>
+      <p class="text-muted mb-0">Comfort and convenience come standard.</p>
+    </div>
+
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <i class="bi bi-wifi fs-1 text-warning"></i>
+        <h6 class="fw-semibold mt-2">High-Speed Internet intall ready.</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-thermometer-snow fs-1 text-warning"></i>
+        <h6 class="fw-semibold mt-2">Air Conditioning intall ready.
+        </h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-shield-check fs-1 text-warning"></i>
+        <h6 class="fw-semibold mt-2">Controlled Access</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-tools fs-1 text-warning"></i>
+        <h6 class="fw-semibold mt-2">Online Maintenance Requests</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

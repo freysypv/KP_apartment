@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery | KP Apartments{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="py-5 bg-light border-bottom">
+  <div class="container text-center py-4">
+    <span class="badge rounded-pill bg-soft-gold mb-3">Gallery</span>
+    <h1 class="display-5 fw-bold mb-3">Take a Look Around</h1>
+    <p class="lead text-muted mx-auto" style="max-width: 640px;">
+      Browse photos of our community, homes, and floor plans.
+    </p>
+  </div>
+</section>
+
+<!-- FILTER BUTTONS -->
+<section class="container pt-5">
+  <div class="d-flex flex-wrap justify-content-center gap-2" id="gallery-filters">
+    <button type="button" class="btn btn-dark rounded-pill px-4" data-filter="all">
+      <i class="bi bi-images me-1"></i> Photos
+    </button>
+    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-filter="exterior">
+      <i class="bi bi-building me-1"></i> Exterior
+    </button>
+    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-filter="interior">
+      <i class="bi bi-door-open me-1"></i> Interior
+    </button>
+    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-filter="floorplan">
+      <i class="bi bi-rulers me-1"></i> Floor Plans
+    </button>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<section class="container py-5">
+  <div class="row g-4" id="gallery-grid">
+    {% for item in items %}
+      <div class="col-sm-6 col-lg-4 gallery-item" data-category="{{ item.category }}">
+        <div class="card feature-card h-100 border-0 shadow-lg">
+          <a href="#" class="gallery-link" data-bs-toggle="modal" data-bs-target="#photoModal"
+             data-image="{{ item.image }}" data-title="{{ item.title }}">
+            <img src="{{ item.image }}" class="card-img-top" alt="{{ item.title }}">
+          </a>
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <h6 class="fw-bold mb-0">{{ item.title }}</h6>
+            <span class="badge rounded-pill bg-soft-gold text-capitalize">
+              {% if item.category == "floorplan" %}Floor Plan{% else %}{{ item.category }}{% endif %}
+            </span>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <p id="gallery-empty" class="text-center text-muted py-5 d-none">No images in this category yet.</p>
+</section>
+
+<!-- PHOTO POPUP -->
+<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0">
+      <div class="modal-header">
+        <h5 class="modal-title" id="photoModalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <img src="" id="photoModalImage" class="img-fluid w-100" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // Initialize gallery filters using buttons and data-category attributes
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll("#gallery-filters button");
+    const items = document.querySelectorAll(".gallery-item");
+    const emptyMsg = document.getElementById("gallery-empty");
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const filter = btn.dataset.filter;
+
+        // highlight the active button
+        buttons.forEach(function (b) {
+          b.classList.remove("btn-dark");
+          b.classList.add("btn-outline-dark");
+        });
+        btn.classList.remove("btn-outline-dark");
+        btn.classList.add("btn-dark");
+
+        // show / hide items
+        let visible = 0;
+        items.forEach(function (item) {
+          const show = filter === "all" || item.dataset.category === filter;
+          item.classList.toggle("d-none", !show);
+          if (show) visible++;
+        });
+        emptyMsg.classList.toggle("d-none", visible > 0);
+      });
+    });
+
+    // fill the popup with the clicked image
+    document.querySelectorAll(".gallery-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        document.getElementById("photoModalImage").src = link.dataset.image;
+        document.getElementById("photoModalImage").alt = link.dataset.title;
+        document.getElementById("photoModalTitle").textContent = link.dataset.title;
+      });
+    });
+  });
+</script>
+
+{% endblock %}

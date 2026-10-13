@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}About | KP Apartments{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="py-5 bg-light border-bottom">
+  <div class="container text-center py-4">
+    <span class="badge rounded-pill bg-soft-gold mb-3">About Us</span>
+    <h1 class="display-5 fw-bold mb-3">A Place You'll Be Proud to Call Home</h1>
+    <p class="lead text-muted mx-auto" style="max-width: 680px;">
+      KP Apartments is a locally run community focused on comfort, care, and making every resident feel at home.
+    </p>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="container py-5">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-6">
+      <img src="https://picsum.photos/seed/kp-about/800/600"
+           class="img-fluid rounded-4 shadow-lg" alt="KP Apartments community">
+    </div>
+    <div class="col-lg-6">
+      <span class="badge rounded-pill bg-soft-gold mb-2">Our Story</span>
+      <h2 class="fw-bold mb-3">Built Around Our Residents</h2>
+      <p class="text-muted">
+        We started KP Apartments with a simple idea: renting should feel easy and personal.
+        From well-kept grounds to quick maintenance responses, every detail is designed
+        around the people who live here.
+      </p>
+      <p class="text-muted">
+        Our team is on site and available, so you always know who to call and what to expect.
+      </p>
+      <a href="{% url 'core:amenities' %}" class="fw-semibold link-accent text-decoration-none">
+        See our amenities &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3">
+        <div class="display-5 fw-bold" style="color: var(--kp-gold);">120+</div>
+        <div class="text-white-50">Homes</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="display-5 fw-bold" style="color: var(--kp-gold);">10+</div>
+        <div class="text-white-50">Years Serving Residents</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="display-5 fw-bold" style="color: var(--kp-gold);">24/7</div>
+        <div class="text-white-50">Emergency Maintenance</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="display-5 fw-bold" style="color: var(--kp-gold);">98%</div>
+        <div class="text-white-50">Resident Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">What We Stand For</h2>
+    <p class="text-muted mb-0">The principles behind how we run our community.</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card feature-card h-100 border-0 shadow-lg text-center p-4">
+        <i class="bi bi-house-heart fs-1 text-warning mb-3"></i>
+        <h5 class="fw-bold">Feel at Home</h5>
+        <p class="text-muted mb-0">Clean, comfortable spaces that feel like yours from day one.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card feature-card h-100 border-0 shadow-lg text-center p-4">
+        <i class="bi bi-chat-dots fs-1 text-warning mb-3"></i>
+        <h5 class="fw-bold">Clear Communication</h5>
+        <p class="text-muted mb-0">Honest answers and prompt replies, with no runaround.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card feature-card h-100 border-0 shadow-lg text-center p-4">
+        <i class="bi bi-tools fs-1 text-warning mb-3"></i>
+        <h5 class="fw-bold">Fast Maintenance</h5>
+        <p class="text-muted mb-0">Submit a request online and we'll get it handled quickly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="badge rounded-pill bg-soft-gold mb-2">Our Team</span>
+      <h2 class="fw-bold">Meet the People Behind KP</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-lg-3">
+        <div class="card feature-card h-100 border-0 shadow-lg text-center">
+          <img src="https://picsum.photos/seed/kp-team1/400/400" class="card-img-top" alt="Property Manager">
+          <div class="card-body">
+            <h6 class="fw-bold mb-0">Property Manager</h6>
+            <small class="text-muted">Leasing &amp; Operations</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card feature-card h-100 border-0 shadow-lg text-center">
+{% endblock %}

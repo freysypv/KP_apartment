@@ -1,0 +1,61 @@
+.hero {
+  min-height: 70vh;
+  background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+              url("../img/hero.jpg") center/cover no-repeat, #343a40;
+}
+/* ===== KP Apartments home ===== */
+:root {
+  --kp-navy: #0f172a;
+  --kp-teal: #14b8a6;
+  --kp-gold: #f59e0b;
+}
+
+.hero {
+  min-height: 80vh;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.55) 60%, rgba(20, 184, 166, 0.35) 100%),
+    url("https://picsum.photos/seed/kp-hero/1600/900") center / cover no-repeat;
+  padding-bottom: 6rem;
+}
+.hero-lead { max-width: 640px; opacity: 0.92; }
+
+.bg-accent { background-color: var(--kp-teal); }
+.btn-accent {
+  background-color: var(--kp-teal);
+  border-color: var(--kp-teal);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(20, 184, 166, 0.35);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn-accent:hover {
+  background-color: #0d9488;
+  border-color: #0d9488;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.link-accent { color: var(--kp-teal); }
+
+/* pull the cards up over the hero */
+.cards-overlap { margin-top: -5rem; position: relative; z-index: 2; }
+
+.feature-card {
+  border: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1.5rem 3rem rgba(15, 23, 42, 0.25) !important;
+}
+.feature-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+.feature-card .card-body {
+  padding: 1.5rem;
+}
+
+.bg-soft-gold { background-color: #f3e3b3; color: #5c4a12; }
+.link-accent { color: #b8860b; }
+.link-accent:hover { color: #8a6508; }
