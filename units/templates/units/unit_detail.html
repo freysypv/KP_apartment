@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Unit {{ unit.number }} | KP Apartments{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container" style="max-width: 760px;">
+    <a href="{% url 'units:list' %}" class="text-decoration-none small">&larr; Back to units</a>
+    <div class="card border-0 shadow-sm mt-3">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <h1 class="h3 fw-bold mb-0">Unit {{ unit.number }}</h1>
+          <span class="badge {% if unit.is_available %}bg-success{% else %}bg-secondary{% endif %}">
+            {{ unit.get_status_display }}
+          </span>
+        </div>
+        <p class="h4">${{ unit.monthly_rent }}<span class="text-muted fs-6"> / month</span></p>
+        <ul class="list-unstyled text-muted mb-3">
+          <li>Floor {{ unit.floor }}</li>
+          <li>{{ unit.bedrooms }} bedroom{{ unit.bedrooms|pluralize }}</li>
+          <li>{{ unit.bathrooms }} bathroom{{ unit.bathrooms|pluralize }}</li>
+          <li>{{ unit.square_feet }} sq ft</li>
+        </ul>
+        {% if unit.description %}<p>{{ unit.description|linebreaksbr }}</p>{% endif %}
+        {% if unit.is_available %}
+          <a href="{% url 'core:contact' %}" class="btn btn-dark">Inquire about this unit</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

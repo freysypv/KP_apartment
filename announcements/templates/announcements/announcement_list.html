@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Announcements | KP Apartments{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container" style="max-width: 760px;">
+    <h1 class="h3 fw-bold mb-4">Announcements</h1>
+
+    {% for a in announcements %}
+      <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <h2 class="h5 fw-bold mb-1">{{ a.title }}</h2>
+            {% if a.is_pinned %}<span class="badge bg-warning text-dark">Pinned</span>{% endif %}
+          </div>
+          <p class="text-muted small mb-3">{{ a.created_at|date:"F j, Y" }}</p>
+          <p class="mb-0">{{ a.body|linebreaksbr }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <div class="alert alert-light border">No announcements right now.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

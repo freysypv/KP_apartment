@@ -13,6 +13,8 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'core:gallery' %}">Gallery</a></li>
 
         {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'maintenance:list' %}">Maintenance</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'announcements:list' %}">Announcements</a></li>
           <li class="nav-item">
             <span class="navbar-text text-light ms-lg-3 me-lg-2">
               {% now "G" as hour %}
@@ -26,6 +28,7 @@
               <button type="submit" class="btn btn-link nav-link">Log Out</button>
             </form>
           </li>
+          
         {% else %}
           <li class="nav-item"><a class="nav-link" href="{% url 'core:login' %}">Log In</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'core:signup' %}">Sign Up</a></li>

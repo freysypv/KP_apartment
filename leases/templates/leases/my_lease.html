@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}My Lease | KP Apartments{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container" style="max-width: 760px;">
+    <h1 class="h3 fw-bold mb-4">My Lease</h1>
+    {% if lease %}
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <h2 class="h5 fw-bold">Unit {{ lease.unit.number }}</h2>
+          <p class="text-muted">{{ lease.unit.bedrooms }} bd &middot; {{ lease.unit.bathrooms }} ba &middot; {{ lease.unit.square_feet }} sq ft</p>
+          <dl class="row mb-0">
+            <dt class="col-sm-4">Lease term</dt>
+            <dd class="col-sm-8">{{ lease.start_date }} &ndash; {{ lease.end_date }}</dd>
+            <dt class="col-sm-4">Monthly rent</dt>
+            <dd class="col-sm-8">${{ lease.monthly_rent }}</dd>
+            <dt class="col-sm-4">Security deposit</dt>
+            <dd class="col-sm-8">${{ lease.security_deposit }}</dd>
+          </dl>
+        </div>
+      </div>
+    {% else %}
+      <div class="alert alert-light border">
+        You don't have an active lease on file yet. If this is a mistake,
+        <a href="{% url 'core:contact' %}">contact the office</a>.
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

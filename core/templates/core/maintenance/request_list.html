@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Maintenance | KP Apartments{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container" style="max-width: 860px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 fw-bold mb-0">My Maintenance Requests</h1>
+      <a href="{% url 'maintenance:new' %}" class="btn btn-dark">New request</a>
+    </div>
+
+    {% if messages %}
+      {% for m in messages %}<div class="alert alert-{{ m.tags }}">{{ m }}</div>{% endfor %}
+    {% endif %}
+
+    {% for r in requests %}
+      <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h2 class="h6 fw-bold mb-1">{{ r.title }}</h2>
+            <span class="badge {% if r.status == 'resolved' %}bg-success{% elif r.status == 'in_progress' %}bg-warning text-dark{% else %}bg-secondary{% endif %}">
+              {{ r.get_status_display }}
+            </span>
+          </div>
+          <p class="text-muted small mb-2">
+            {{ r.unit }} &middot; {{ r.get_category_display }} &middot; {{ r.get_priority_display }} priority &middot; {{ r.created_at|date:"M j, Y" }}
+          </p>
+          <p class="mb-0">{{ r.description|linebreaksbr }}</p>
+          {% if r.staff_notes %}
+            <hr><p class="small mb-0"><strong>Office note:</strong> {{ r.staff_notes|linebreaksbr }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <div class="alert alert-light border">You haven't submitted any requests yet.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
