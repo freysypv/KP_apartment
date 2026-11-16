@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | KP Apartments{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="h3 fw-bold mb-4">Welcome, {{ user.get_short_name|default:user.username }}</h1>
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h2 class="h5 fw-bold">My Lease</h2>
+            {% if lease %}
+              <p class="mb-1"><strong>Unit {{ lease.unit.number }}</strong></p>
+              <p class="text-muted small mb-2">{{ lease.start_date }} &ndash; {{ lease.end_date }}</p>
+              <p class="h5 mb-3">${{ lease.monthly_rent }}<span class="text-muted fs-6"> / month</span></p>
+              <a href="{% url 'leases:my_lease' %}" class="btn btn-outline-dark btn-sm">View lease</a>
+            {% else %}
+              <p class="text-muted mb-0">No active lease on file. <a href="{% url 'core:contact' %}">Contact the office</a> if this looks wrong.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h2 class="h5 fw-bold mb-0">Open Requests</h2>
+              <a href="{% url 'maintenance:new' %}" class="btn btn-dark btn-sm">New</a>
+            </div>
+            {% for r in open_requests %}
+              <div class="border-top py-2">
+                <div class="d-flex justify-content-between">
+                  <span>{{ r.title }}</span>
+                  <span class="badge {% if r.status == 'in_progress' %}bg-warning text-dark{% else %}bg-secondary{% endif %}">{{ r.get_status_display }}</span>
+                </div>
+                <small class="text-muted">{{ r.created_at|date:"M j" }}</small>
+              </div>
+            {% empty %}
+              <p class="text-muted mb-0">Nothing open right now.</p>
+            {% endfor %}
+            <a href="{% url 'maintenance:list' %}" class="small d-block mt-2">All requests</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h2 class="h5 fw-bold">Announcements</h2>
+            {% for a in announcements %}
+              <div class="border-top py-2">
+                <strong>{{ a.title }}</strong>
+                <div class="small text-muted">{{ a.created_at|date:"M j, Y" }}</div>
+              </div>
+            {% empty %}
+              <p class="text-muted mb-0">No announcements right now.</p>
+            {% endfor %}
+            <a href="{% url 'announcements:list' %}" class="small d-block mt-2">All announcements</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

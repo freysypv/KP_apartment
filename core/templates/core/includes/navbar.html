@@ -15,6 +15,7 @@
         {% if user.is_authenticated %}
           <li class="nav-item"><a class="nav-link" href="{% url 'maintenance:list' %}">Maintenance</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'announcements:list' %}">Announcements</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'leases:dashboard' %}">Dashboard</a></li>
           <li class="nav-item">
             <span class="navbar-text text-light ms-lg-3 me-lg-2">
               {% now "G" as hour %}

@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import login
-from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
 
 from .forms import ContactForm, SignUpForm
+from .models import ContactMessage
 
 
 class HomeView(TemplateView):
@@ -26,17 +26,7 @@ class ContactView(FormView):
     success_url = reverse_lazy("core:contact")
 
     def form_valid(self, form):
-        data = form.cleaned_data
-        send_mail(
-            subject=f"KP Apartments inquiry from {data['name']}",
-            message=(
-                f"From: {data['name']} <{data['email']}>\n"
-                f"Phone: {data['phone']}\n\n"
-                f"{data['message']}"
-            ),
-            from_email=None,  # uses DEFAULT_FROM_EMAIL
-            recipient_list=["office@kpapartments.com"],  # change to your address
-        )
+        ContactMessage.objects.create(**form.cleaned_data)
         messages.success(self.request, "Thanks! We got your message and will reply soon.")
         return super().form_valid(form)
 
